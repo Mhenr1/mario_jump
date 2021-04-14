@@ -4,7 +4,7 @@ const Player = {
   width: 50,
   height: 50,
   jumpForce: 18,
-  jump: 0,
+  maxJumps: 0,
   velocity: 0,
   pos_x: 50,
   pos_y: 0,
@@ -31,12 +31,11 @@ const Player = {
   move(e) {
     if (
       e.keyCode === Configs.controls.up &&
-      Player.jump < 3 &&
+      Player.maxJumps < 3 &&
       !Player.locked
     ) {
       Player.locked = true;
       Player.jump();
-     
     }
   },
   jump() {
