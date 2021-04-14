@@ -29,18 +29,19 @@ const Player = {
     }
   },
   move(e) {
+    console.log( Player.locked)
     if (
       e.keyCode === Configs.controls.up &&
       Player.maxJumps < 3 &&
       !Player.locked
     ) {
-      Player.locked = true;
       Player.jump();
     }
+    Player.locked = true;
   },
   jump() {
     Player.velocity = -Player.jumpForce;
-    Player.jump++;
+    Player.maxJumps++;
   },
 };
 
