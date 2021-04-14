@@ -25,7 +25,7 @@ const Player = {
     if (Player.pos_y + Player.height > Configs.floor) {
       Player.pos_y = Configs.floor - Player.height;
       Player.velocity = 0;
-      Player.jump = 0;
+      Player.maxJumps = 0;
     }
   },
   move(e) {
