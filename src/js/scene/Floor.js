@@ -13,7 +13,7 @@ const Floor = {
   __box: [],
   width: 68,
   init() {
-    Floor.image.src = "../src/img/background-objects.gif";
+    Floor.image.src = "/src/img/background-objects.gif";
     let nBox = 1 + Math.ceil(Configs.canvas.width / (Floor.width * 2));
     Configs.ctx.fillStyle = Floor.color;
     Configs.ctx.fillRect(0, Configs.floor, Configs.canvas.width, 50);

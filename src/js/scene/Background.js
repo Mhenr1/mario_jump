@@ -11,7 +11,7 @@ const Background = {
   __box: [],
 
   init() {
-    Background.image.src = "../src/img/backgrounds.png";
+    Background.image.src = "/src/img/backgrounds.png";
     let nBox =  Math.ceil(Configs.canvas.width / (Background.width * 2)) +1;
 
     for (let i = 0; i <= nBox; i++) {
