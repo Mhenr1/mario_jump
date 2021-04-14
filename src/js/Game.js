@@ -6,13 +6,16 @@ import Background from "./scene/Background.js";
 const Game = {
   status: Configs.status.playing,
   init(canvasID) {
-    document.addEventListener("keydown", Player.move);
-    document.addEventListener("keyup", () => (Player.locked = false));
+   
     Configs.canvas = document.getElementById(canvasID);
     Configs.ctx = Configs.canvas.getContext("2d");
-    Configs.floor = Configs.canvas.height - 50;
+    Configs.floor = Configs.canvas.height - Floor.height;
     Floor.init();
     Background.init();
+
+    document.addEventListener("keydown", Player.move);
+    document.addEventListener("click", Player.jump);
+    document.addEventListener("keyup", () => (Player.locked = false));
 
     Game.run();
   },

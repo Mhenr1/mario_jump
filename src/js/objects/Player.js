@@ -29,16 +29,19 @@ const Player = {
     }
   },
   move(e) {
-    if (e.keyCode === 80) Configs.velocity = Configs.velocity === 0 ? 4 : 0;
     if (
       e.keyCode === Configs.controls.up &&
       Player.jump < 3 &&
       !Player.locked
     ) {
-      Player.velocity = -Player.jumpForce;
-      Player.jump++;
+      Player.locked = true;
+      Player.jump();
+     
     }
-    Player.locked = true;
+  },
+  jump() {
+    Player.velocity = -Player.jumpForce;
+    Player.jump++;
   },
 };
 
