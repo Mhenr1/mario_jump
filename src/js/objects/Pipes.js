@@ -21,16 +21,16 @@ const Pipes = {
     Pipes.time = 50 + Math.random() * 100;
     Pipes.__pipes.push({
       pos_x: Configs.canvas.width,
-      width: 50,
+      width: Pipes.width,
       height: Pipes.height * (1.1 - Math.random()),
     });
   },
   update() {
     Pipes.__pipes.map((pipe) => (pipe.pos_x -= Configs.velocity));
-    if (-50 > Pipes.__pipes[0]?.pos_x) {
+    if (-Pipes.width > Pipes.__pipes[0]?.pos_x) {
       Pipes.__pipes.shift();
     }
-    if (Pipes.time-- < 0 && Configs.velocity !== 0) {
+    if (Pipes.time-- < 0) {
       Pipes.generate();
     }
   },

@@ -6,16 +6,16 @@ import Background from "./scene/Background.js";
 const Game = {
   status: Configs.status.playing,
   init(canvasID) {
-   
     Configs.canvas = document.getElementById(canvasID);
     Configs.ctx = Configs.canvas.getContext("2d");
     Configs.floor = Configs.canvas.height - Floor.height;
+
     Floor.init();
     Background.init();
 
     document.addEventListener("keydown", Player.move);
-    document.addEventListener("click", Player.jump);
     document.addEventListener("keyup", () => (Player.locked = false));
+    document.addEventListener("click", Player.jump);
 
     Game.run();
   },
@@ -27,7 +27,7 @@ const Game = {
       Game.draw();
     }
 
-    requestAnimationFrame(Game.run, Configs.canvas);
+    Configs.frame = requestAnimationFrame(Game.run, Configs.canvas);
   },
   draw() {
     Configs.ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -49,13 +49,13 @@ const Game = {
     if (
       Player.pos_y + Player.height >=
         Configs.floor - Pipes.__pipes[0]?.height &&
-      Pipes.__pipes[0]?.pos_x <= Player.pos_x + Pipes.width &&
+      Pipes.__pipes[0]?.pos_x <= Player.pos_x + Player.width * 2 &&
       Pipes.__pipes[0]?.pos_x + Pipes.width > Player.pos_x
     ) {
       Game.status = Configs.status.stopped;
       console.table({
-P:0
-
+        Pipe: Pipes.__pipes[0]?.pos_x,
+        Player: Player.pos_x + Player.width * 2,
       });
     }
   },
