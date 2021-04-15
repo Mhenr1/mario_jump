@@ -14,7 +14,7 @@ const Player = {
   image: new Image(),
 
   init() {
-    Player.image.src = "/src/img/M&L.png";
+    Player.image.src = "./src/img/M&L.png";
   },
   draw() {
     Configs.ctx.drawImage(
