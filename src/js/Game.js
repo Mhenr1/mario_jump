@@ -47,17 +47,15 @@ const Game = {
   },
   finish() {
     if (
-      Player.pos_y + Player.height >=
+      Player.pos_y + Player.height * 2 >=
         Configs.floor - Pipes.__pipes[0]?.height &&
       Pipes.__pipes[0]?.pos_x <= Player.pos_x + Player.width * 2 &&
       Pipes.__pipes[0]?.pos_x + Pipes.width > Player.pos_x
     ) {
       Game.status = Configs.status.stopped;
-      console.table({
-        Pipe: Pipes.__pipes[0]?.pos_x,
-        Player: Player.pos_x + Player.width * 2,
-      });
+    
     }
+   
   },
 };
 

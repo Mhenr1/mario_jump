@@ -16,7 +16,7 @@ const Pipes = {
     Pipes.image.src = "./src/img/pipes-2.png";
   },
   draw() {
-    Configs.ctx.fillStyle = "blue";
+   
     Pipes.__pipes?.forEach((pipe) => {
        Configs.ctx.drawImage(
         Pipes.image,
