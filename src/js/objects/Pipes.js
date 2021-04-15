@@ -1,5 +1,5 @@
 import Configs from "../utils/Configs.js";
-
+import Scoreboard from "../utils/Scoreboard.js"
 const Pipes = {
   __pipes: [],
   time: 250,
@@ -56,6 +56,7 @@ const Pipes = {
     Pipes.__pipes.map((pipe) => (pipe.pos_x -= Configs.velocity));
     if (-Pipes.width > Pipes.__pipes[0]?.pos_x) {
       Pipes.__pipes.shift();
+      Scoreboard.score++;
     }
     if (Pipes.time-- < 0) {
       Pipes.generate();

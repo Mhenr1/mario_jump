@@ -3,6 +3,7 @@ import Player from "./objects/Player.js";
 import Pipes from "./objects/Pipes.js";
 import Floor from "./scene/Floor.js";
 import Background from "./scene/Background.js";
+import Scoreboard from "./utils/Scoreboard.js";
 const Game = {
   status: Configs.status.playing,
   init(canvasID) {
@@ -13,6 +14,7 @@ const Game = {
     Floor.init();
     Background.init();
     Pipes.init();
+    Scoreboard.init();
     document.addEventListener("keydown", Player.move);
     document.addEventListener("keyup", () => (Player.locked = false));
     document.addEventListener("click", Player.jump);
@@ -22,7 +24,7 @@ const Game = {
 
   run() {
     if (Game.status === Configs.status.playing) {
-      Game.finish();
+      Game.playing();
       Game.update();
       Game.draw();
     }
@@ -35,9 +37,7 @@ const Game = {
     Pipes.draw();
     Floor.draw();
     Player.draw();
-
-    // Configs.ctx.font = "20px serif";
-    // Configs.ctx.fillText(`P:  ${Player.pos_x}`, 400, 50);
+    Scoreboard.draw();
   },
   update() {
     Background.update();
@@ -45,7 +45,7 @@ const Game = {
     Pipes.update();
     Floor.update();
   },
-  finish() {
+  playing() {
     if (
       Player.pos_y + Player.height * 2 >=
         Configs.floor - Pipes.__pipes[0]?.height &&
@@ -53,9 +53,8 @@ const Game = {
       Pipes.__pipes[0]?.pos_x + Pipes.width > Player.pos_x
     ) {
       Game.status = Configs.status.stopped;
-    
     }
-   
+  
   },
 };
 
