@@ -12,7 +12,7 @@ const Game = {
 
     Floor.init();
     Background.init();
-
+    Pipes.init();
     document.addEventListener("keydown", Player.move);
     document.addEventListener("keyup", () => (Player.locked = false));
     document.addEventListener("click", Player.jump);
@@ -32,8 +32,8 @@ const Game = {
   draw() {
     Configs.ctx.clearRect(0, 0, canvas.width, canvas.height);
     Background.draw();
-    Floor.draw();
     Pipes.draw();
+    Floor.draw();
     Player.draw();
 
     // Configs.ctx.font = "20px serif";
