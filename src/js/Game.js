@@ -14,7 +14,7 @@ const Game = {
     Floor.init();
     Background.init();
     Pipes.init();
-    Scoreboard.init();
+
     document.addEventListener("keydown", Player.move);
     document.addEventListener("keyup", () => (Player.locked = false));
     document.addEventListener("click", Player.jump);
@@ -24,11 +24,11 @@ const Game = {
 
   run() {
     if (Game.status === Configs.status.playing) {
-      Game.playing();
-      Game.update();
-      Game.draw();
+      Game.playScreen();
     }
-
+    if (Game.status === Configs.status.stopped) {
+      Game.endScreen();
+    }
     Configs.frame = requestAnimationFrame(Game.run, Configs.canvas);
   },
   draw() {
@@ -37,15 +37,17 @@ const Game = {
     Pipes.draw();
     Floor.draw();
     Player.draw();
-    Scoreboard.draw();
+    Scoreboard.draw({ x: 50, y: 50, size: 20 });
   },
   update() {
     Background.update();
     Player.update();
     Pipes.update();
     Floor.update();
+    Game.draw();
   },
-  playing() {
+
+  playScreen() {
     if (
       Player.pos_y + Player.height * 2 >=
         Configs.floor - Pipes.__pipes[0]?.height &&
@@ -53,8 +55,18 @@ const Game = {
       Pipes.__pipes[0]?.pos_x + Pipes.width > Player.pos_x
     ) {
       Game.status = Configs.status.stopped;
+      Pipes.clear();
+      Scoreboard.save();
     }
-  
+    Game.update();
+  },
+  endScreen() {
+    Configs.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    Background.draw();
+    Floor.draw();
+    Player.draw();
+    Scoreboard.draw({ x: 250, y: 250, size: 50 });
+   
   },
 };
 
