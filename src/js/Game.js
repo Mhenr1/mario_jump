@@ -41,7 +41,7 @@ const Game = {
     Player.draw();
     let x = 50,
       y = 50;
-    Scoreboard.draw({ x, y, size: 20 });
+    Scoreboard.draw({ x, y, size: 15 });
   },
   update() {
     Background.update();
@@ -73,7 +73,7 @@ const Game = {
 
     let x = Configs.canvas.width / 2,
       y = Configs.canvas.height / 2;
-    Scoreboard.draw({ x, y, size: 50 });
+    Scoreboard.draw({ x, y, size: 25 });
   },
   resize() {
   let diff =  Configs.canvas.height
@@ -85,7 +85,7 @@ const Game = {
     Configs.floor = Configs.canvas.height - Floor.height;
     Floor.init();
     Background.init();
-    console.log(   Configs.canvas.height)
+  
   },
 };
 window.onresize = Game.resize;
