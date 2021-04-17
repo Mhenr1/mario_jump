@@ -29,7 +29,7 @@ const Game = {
       Game.playScreen();
     }
     if (Game.status === Configs.status.stopped) {
-      Game.endScreen();
+      Game.endGame();
     }
     Configs.frame = requestAnimationFrame(Game.run, Configs.canvas);
   },
@@ -64,11 +64,11 @@ const Game = {
     }
     Game.update();
   },
-  endScreen() {
+  endGame() {
     Configs.ctx.clearRect(0, 0, canvas.width, canvas.height);
     Background.draw();
     Floor.draw();
-
+    Player.endGame()
     Player.draw();
 
     let x = Configs.canvas.width / 2,

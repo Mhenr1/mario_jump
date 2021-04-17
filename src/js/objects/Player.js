@@ -60,6 +60,17 @@ const Player = {
     Player.velocity = -Player.jumpForce;
     Player.maxJumps++;
   },
+  endGame() {
+    if(!Player.locked){
+      Player.velocity = -Player.jumpForce;
+      Player.locked= true
+    }
+    Player.srcX =
+      (6 + (Math.ceil(Configs.frame / Configs.velocity / 2) % 2)) *
+      Player.width;
+    Player.velocity += Configs.gravity;
+    Player.pos_y += Player.velocity;
+  },
 };
 Player.init();
 export default Player;

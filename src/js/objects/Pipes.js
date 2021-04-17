@@ -2,7 +2,7 @@ import Configs from "../utils/Configs.js";
 import Scoreboard from "../utils/Scoreboard.js";
 const Pipes = {
   __pipes: [],
-  time: 250,
+  time: 100,
   width: 34,
   fix: null,
   height: 150,
