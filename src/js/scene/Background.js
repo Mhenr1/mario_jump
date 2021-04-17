@@ -13,13 +13,14 @@ const Background = {
   init() {
     Background.image.src = "./src/img/backgrounds.png";
 
-    let nBox = Math.ceil(Configs.canvas.width / Background.width) + 1;
-
-    for (let i = Background.__box.length - 1; i <= nBox; i++) {
+    let nBox = Math.ceil(Configs.canvas.width / Background.width ) + 1;
+    Background.__box= []
+    for (let i = Background.__box.length; i < nBox; i++) {
       Background.__box.push({
         posX: i * (Background.width - 1),
       });
     }
+    console.table(Background.__box);
   },
   draw() {
     Configs.ctx.fillStyle = Background.color;

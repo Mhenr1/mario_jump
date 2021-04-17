@@ -16,8 +16,9 @@ const Floor = {
     Floor.image.src = "./src/img/background-objects.gif";
     let nBox = 1 + Math.ceil(Configs.canvas.width / (Floor.width * 2));
     Configs.ctx.fillStyle = Floor.color;
+    Floor.__box = [];
     Configs.ctx.fillRect(0, Configs.floor, Configs.canvas.width, 50);
-    for (let i = Floor.__box.length - 1; i < nBox; i++) {
+    for (let i = 0; i < nBox; i++) {
       Floor.__box.push({
         posX: 2 * i * (Floor.width - 1),
       });

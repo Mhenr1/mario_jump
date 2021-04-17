@@ -58,9 +58,9 @@ const Game = {
       Pipes.__pipes[0]?.pos_x <= Player.pos_x + Player.width * 2 &&
       Pipes.__pipes[0]?.pos_x + Pipes.width > Player.pos_x
     ) {
-      Game.status = Configs.status.stopped;
-      Pipes.clear();
-      Scoreboard.save();
+      // Game.status = Configs.status.stopped;
+      // Pipes.clear();
+      // Scoreboard.save();
     }
     Game.update();
   },
