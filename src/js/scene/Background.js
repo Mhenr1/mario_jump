@@ -12,9 +12,10 @@ const Background = {
 
   init() {
     Background.image.src = "./src/img/backgrounds.png";
+    
     let nBox =  Math.ceil(Configs.canvas.width / (Background.width * 2)) +1;
 
-    for (let i = 0; i <= nBox; i++) {
+    for (let i = Background.__box.length - 1; i < nBox; i++) {
       Background.__box.push({
         posX:  i * (Background.width - 1),
       });

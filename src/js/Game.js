@@ -80,6 +80,7 @@ const Game = {
     Configs.canvas.width =  window.innerWidth;
     Configs.floor = Configs.canvas.height - Floor.height;
     Floor.init();
+    Background.init();
   },
 };
 window.onresize = Game.resize;
