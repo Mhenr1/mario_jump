@@ -6,7 +6,7 @@ const Pipes = {
   width: 34,
   fix: null,
   height: 150,
-
+  max:5,
   imgHeight: 32,
   topSrcY: 0,
   bottomSrcY: 34,
@@ -43,6 +43,7 @@ const Pipes = {
   },
   generate() {
     Pipes.time = 50 + Math.random() * 100;
+
     Pipes.__pipes.push({
       pos_x: Configs.canvas.width,
       width: Pipes.width * Pipes.fix,
@@ -56,7 +57,7 @@ const Pipes = {
       Pipes.__pipes.shift();
       Scoreboard.score++;
     }
-    if (Pipes.time-- < 0) {
+    if (Pipes.time-- < 0&& Pipes.__pipes.length < Pipes.max ) {
       Pipes.generate();
     }
   },

@@ -17,6 +17,8 @@ const Game = {
 
     document.addEventListener("keydown", Player.move);
     document.addEventListener("keyup", () => (Player.locked = false));
+    document.addEventListener("touchstart", ()=>{ Player.jump, Player.locked = true });
+    document.addEventListener("touchend", () => (Player.locked = false));
     document.addEventListener("click", Player.jump);
 
     Game.run();
@@ -74,8 +76,8 @@ const Game = {
     Scoreboard.draw({ x, y, size: 50 });
   },
   resize() {
-    Configs.canvas.height = Math.min(400, window.innerHeight);
-    Configs.canvas.width = Math.min(720, window.innerWidth);
+    Configs.canvas.height = window.innerHeight;
+    Configs.canvas.width =  window.innerWidth;
     Configs.floor = Configs.canvas.height - Floor.height;
     Floor.init();
   },
