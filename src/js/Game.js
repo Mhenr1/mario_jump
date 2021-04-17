@@ -58,9 +58,9 @@ const Game = {
       Pipes.__pipes[0]?.pos_x <= Player.pos_x + Player.width * 2 &&
       Pipes.__pipes[0]?.pos_x + Pipes.width > Player.pos_x
     ) {
-      // Game.status = Configs.status.stopped;
-      // Pipes.clear();
-      // Scoreboard.save();
+      Game.status = Configs.status.stopped;
+      Pipes.clear();
+      Scoreboard.save();
     }
     Game.update();
   },
@@ -76,11 +76,16 @@ const Game = {
     Scoreboard.draw({ x, y, size: 50 });
   },
   resize() {
+  let diff =  Configs.canvas.height
     Configs.canvas.height = window.innerHeight;
     Configs.canvas.width =  window.innerWidth;
+    if(diff -=  Configs.canvas.height >0){
+      Pipes.__pipes.map(pipe=>pipe.pos_x+=diff)
+    }
     Configs.floor = Configs.canvas.height - Floor.height;
     Floor.init();
     Background.init();
+    console.log(   Configs.canvas.height)
   },
 };
 window.onresize = Game.resize;
